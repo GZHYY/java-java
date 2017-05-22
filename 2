@@ -1,0 +1,44 @@
+import java.sql.Connection;  
+import java.sql.DriverManager;  
+import java.sql.ResultSet;  
+import java.sql.SQLException;  
+import java.sql.Statement;  
+  
+public class TestJDBC {  
+  
+    public static void main(String[] args) {  
+        Connection conn = null;  
+        ResultSet rs = null;  
+        Statement state = null;  
+        try {  
+            Class.forName("oracle.jdbc.OracleDriver");  
+            conn = DriverManager.getConnection("jdbc:oracle:" +  
+                    "thin:@127.0.0.1:1521:ORCL","scott","tiger");  
+            state = conn.createStatement();           
+            rs = state.executeQuery("select * from dept");  
+            while(rs.next()){  
+                String s = rs.getString("dname");  
+                System.out.println(s.toLowerCase());  
+            }  
+        } catch (ClassNotFoundException e) {  
+            e.printStackTrace();  
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        } finally {  
+            try {  
+                if(rs != null)  
+                    rs.close();  
+                if(state != null)  
+                    state.close();  
+                if(conn != null)  
+                    conn.close();  
+            } catch (SQLException e) {  
+                e.printStackTrace();  
+            }  
+              
+        }  
+          
+          
+    }  
+      
+}  
