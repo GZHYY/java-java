@@ -1,0 +1,137 @@
+import java.awt.Button;
+
+import java.awt.Color;
+
+import java.awt.FlowLayout;
+
+import java.awt.Font;
+
+import java.awt.Frame;
+
+import java.awt.Label;
+
+import java.awt.TextField;
+
+import java.awt.event.ActionEvent;
+
+import java.awt.event.ActionListener;
+
+import java.awt.event.WindowAdapter;
+
+import java.awt.event.WindowEvent;
+
+import javax.swing.JOptionPane;
+
+public class 查询成绩登陆系统 extends Frame{
+
+private Label lab_stuNum,lab_stuPassword;
+
+private TextField tf_stuNum,tf_stuPassword;
+
+private Button bt_login,bt_reset;
+
+public Label getLab_stuNum() {
+
+if(this.lab_stuNum==null){
+
+this.lab_stuNum=new Label("学号");
+
+}
+
+return lab_stuNum;
+
+}
+
+public Label getLab_stuPassword() {
+
+if(this.lab_stuPassword==null){
+
+this.lab_stuPassword=new Label("密码");
+
+}
+
+return lab_stuPassword;
+
+}
+
+public TextField getTf_stuNum() {
+
+if(this.tf_stuNum==null){
+
+this.tf_stuNum=new TextField(15);
+
+}
+
+return tf_stuNum;
+
+}
+
+public TextField getTf_stuPassword() {
+
+if(this.tf_stuPassword==null){
+
+this.tf_stuPassword=new TextField(15);
+
+this.tf_stuPassword.setEchoChar('●');
+
+}
+
+return tf_stuPassword;
+
+}
+
+public Button getBt_login() {
+
+if(this.bt_login==null){
+
+this.bt_login=new Button("登陆");
+
+this.bt_login.addActionListener(new ActionListener(){
+
+@Override
+
+public void actionPerformed(ActionEvent e) {
+
+String account=tf_stuNum.getText();
+
+if(account==null||"".equals(account)){
+
+JOptionPane.showMessageDialog(查询成绩登陆系统.this, "请输入学号");
+
+tf_stuNum.requestFocus();
+
+}
+
+String pw=tf_stuPassword.getText();
+
+if(pw==null||"".equals(pw)){
+
+JOptionPane.showMessageDialog(查询成绩登陆系统.this, "请输入密码");
+
+tf_stuPassword.requestFocus();
+
+}
+
+String db_account="admin";
+
+String db_password="000000";
+
+if(account.equals(db_account)&&pw.equals(db_password)){
+
+JOptionPane.showMessageDialog(查询成绩登陆系统.this, "登陆成功");
+
+查询成绩登陆系统.this.dispose();
+
+}else{
+
+JOptionPane.showMessageDialog(查询成绩登陆系统.this,"账号密码不对");
+
+tf_stuNum.setText("");
+
+tf_stuPassword.setText("");
+
+tf_stuNum.requestFocus();
+
+}
+
+}
