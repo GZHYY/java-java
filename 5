@@ -1,0 +1,64 @@
+package circle;
+
+public class Circle {
+	double radius;
+	double area;
+	double length;
+
+	// 定义空参数构造函数，主要是为了给下面的c1引用
+	Circle() {
+	}
+
+	// 定义int参数构造函数，主要是为了给下面的c2引用
+	Circle(int radius) {
+		this.radius = radius;
+	}
+
+	// 设置半径
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+
+	// 获取半径
+	public double getRadius() {
+		return radius;
+	}
+
+	// 获取面积
+	public double getArea() {
+		return 3.14 * radius * radius;
+	}
+
+	// 获取周长
+	public double getLength() {
+		return 2 * 3.14 * radius;
+	}
+
+}
+
+
+
+package circle;
+
+public class Run {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// 创建类Circled的对象c1，
+				Circle c1 = new Circle();
+				// 创建类Circled的对象c2，并初始化c2对象的半径值
+				Circle c2 = new Circle(100);
+				// 将c1半径设成1
+				c1.setRadius(1);
+				System.out.print(" 圆c1的半径是: " + c1.getRadius());
+				System.out.print(" 圆c1的面积是: " + c1.getArea());
+				System.out.print(" 圆c1的周长是: " + c1.getLength());
+				System.out.println();
+				System.out.print(" 圆c2的半径是: " + c2.getRadius());
+				System.out.print(" 圆c2的面积是: " + c2.getArea());
+				System.out.print(" 圆c2的周长是: " + c2.getLength());
+			}
+
+	}
+
+
